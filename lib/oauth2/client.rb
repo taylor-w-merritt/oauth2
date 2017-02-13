@@ -135,6 +135,19 @@ module OAuth2
       params = Authenticator.new(id, secret, options[:auth_scheme]).apply(params)
       opts = {:raise_errors => options[:raise_errors], :parse => params.delete(:parse)}
       headers = params.delete(:headers) || {}
+      
+      $stdout.puts "---------------------- headers ----------------------"
+      $stdout.puts headers
+      
+      $stdout.puts "---------------------- token_method ----------------------"
+      $stdout.puts options[:token_method]
+      
+      $stdout.puts "---------------------- token_url ----------------------"
+      $stdout.puts token_url
+            
+      $stdout.puts "---------------------- opts ----------------------"
+      $stdout.puts opts
+      
       if options[:token_method] == :post
         opts[:body] = params
         opts[:headers] = {'Content-Type' => 'application/x-www-form-urlencoded'}
