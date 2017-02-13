@@ -103,7 +103,7 @@ module OAuth2
       $stdout.puts "---------------------- opts[:headers] ----------------------"
       $stdout.puts opts[:headers]
 
-      response = connection.run_request(verb, url, opts[:body], opts[:headers]) do |req|
+      response = connection.run_request(verb, url, opts[:body], nil) do |req|
         yield(req) if block_given?
       end
       response = Response.new(response, :parse => opts[:parse])
